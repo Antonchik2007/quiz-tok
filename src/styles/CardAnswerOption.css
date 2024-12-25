@@ -1,0 +1,41 @@
+.card-answer-option{
+    border: 3px solid #3A3A3A; /* Dark Gray */
+    background-color: #2C2C2C;
+    margin: 10px;
+    width: 76vw;
+    height: 10vh;
+    border-radius: 200px;
+    display: flex;
+    
+    overflow: hidden;
+    
+    
+}
+
+.select-answer-button{
+    justify-content: center;
+     /* Dark Blue */
+    cursor: pointer;
+    color: #E0E0E0; /* Light Gray */
+    border: 1px solid #3A3A3A; /* Dark Gray */
+    border: none;
+    font-size: 2rem;
+    border-radius: 25px;
+    margin-top: 15px;
+    align-items: center; 
+   
+}
+.answer-text-wrapper{
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    margin-right: 0vw;
+}
+.select-answer-button-wrapper{
+    display: flex;
+    margin-left: 4vw;
+    margin-top: 0.5vh;
+    align-items: center;
+    min-width: 15vw;
+    align-items: flex-start;
+}

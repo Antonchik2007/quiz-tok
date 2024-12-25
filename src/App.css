@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  overflow: hidden; /* Disable scrolling */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-container{
+  align-content: center;
+  background-color: #2f2f2f;
+  height: 100vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.secondary-container{
+  margin-top: 9%;
+}
+.footer{
+  position: absolute;
+  bottom: -6%;
+}
+.footer-wrapper{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  border-top: 3px solid #3a3a3a;
+  padding-top: 3vh;
+  padding-bottom: 4vh;
+  background-color: #1B1B1B;
+}
+
+.header{
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ 
 }
 
-.App-link {
-  color: #61dafb;
+p, h1, h2, h3, h4, h5 {
+  color: #E0E0E0; /* Light Gray */
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0px;
+  padding: 0px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-content-wrapper{
+  width: 100wv;
+  height: 100vh;
+  overflow-y: scroll; /* Vertical scrolling */
+  scroll-snap-type: y mandatory; /* Snap vertically */
+  scroll-behavior: smooth; /* Smooth scrolling between sections */
+}
+.app-title{
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+.footer-home-button{
+  margin-left: 15vw;
+  font-size: 1rem;
+}
+.footer-profile-button{
+  margin-right: 15vw;
+  font-size: 1rem;
 }
