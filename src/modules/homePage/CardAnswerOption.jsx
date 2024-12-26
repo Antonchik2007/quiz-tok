@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import './../styles/CardAnswerOption.css'
+import './../../styles/CardAnswerOption.css'
 import confetti from 'canvas-confetti'; 
 
 const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsTinted}) => {

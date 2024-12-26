@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
-import './../styles/Card.css'
+import './../../styles/Card.css'
 import CardAnswerOption from './CardAnswerOption'
 
 const Card = ({pageProps, pageIndex}) => {
