@@ -12,7 +12,8 @@ export default function App() {
   const [pageCount, setPageCount] = useState(2)
   const [fetching, setFetching] = useState(true)
   const [selectedPage, setSelectedPage] = useState('')
-  const pageProps = [pageData, setPageData, currentPage, setCurrentPage]
+  const [apiSuffix, setApiSuffix] = useState('dataForApp/HighSchool/Math/AP%20preCalc/Exponential%20and%20Logarithmic%20Functions.json')
+  const pageProps = [pageData, setPageData, currentPage, setCurrentPage, apiSuffix, setApiSuffix, selectedPage, setSelectedPage]
 
   const scrollableDivRef = useRef(null)
 
@@ -72,7 +73,7 @@ export default function App() {
       <div className='main-container'>
         <div className="secondary-container">
         <div className='header'>
-          <ScrollTry pageProps={pageProps}/>
+          <ScrollTry pageProps={pageProps} apiSuffix={apiSuffix}/>
           <h1 className='app-title'>QuizTok</h1>
         </div>
 
@@ -83,7 +84,7 @@ export default function App() {
         <div className="footer">
           <div className='footer-wrapper'>
             <h3 className='footer-home-button' onClick={() => setSelectedPage(cards)}>Home</h3>
-            <h3 className='footer-profile-button' onClick={() => setSelectedPage(<ProfilePage selectedPage={selectedPage} setSelectedPage={setSelectedPage}/>)}>Profile</h3>
+            <h3 className='footer-profile-button' onClick={() => setSelectedPage(<ProfilePage  pageProps={pageProps} setSelectedPage={setSelectedPage} setApiSuffix={setApiSuffix}  apiSuffix={apiSuffix} />)}>Profile</h3>
           </div>
         </div>
         </div>

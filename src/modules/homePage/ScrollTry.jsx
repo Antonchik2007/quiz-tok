@@ -1,13 +1,13 @@
 import React, {useEffect}from "react";
 import axios from 'axios';
-const ScrollTry = ({pageProps}) => {
+const ScrollTry = ({pageProps, apiSuffix}) => {
 
-    const [pageData, setPageData, currentPage, setCurrentPage] = pageProps;
+    const [pageData, setPageData, currentPage, setCurrentPage, setApiSuffix] = pageProps;
 
     useEffect(() => {
         const fetchAnswers = async () => {
             try{
-                const response = await axios.get('https://antonchik2007.github.io/DataBase/dataForApp/Math/AP%20preCalc/FunctionsAndGraphs.json')
+                const response = await axios.get(`https://antonchik2007.github.io/DataBase/${apiSuffix}`)
                 setPageData(response.data);
                 console.log(pageData)
                 
@@ -17,7 +17,7 @@ const ScrollTry = ({pageProps}) => {
             }
         }
         fetchAnswers();
-    }, []) //function for getting data from the API
+    }, [apiSuffix]) //function for getting data from the API
     
 
 

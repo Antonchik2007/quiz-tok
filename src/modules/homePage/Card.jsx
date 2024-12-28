@@ -2,10 +2,23 @@ import React, {useState, useRef, useEffect} from 'react'
 import './../../styles/Card.css'
 import CardAnswerOption from './CardAnswerOption'
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 const Card = ({pageProps, pageIndex}) => {
 
 const [pageData, setPageData, currentPage, setCurrentPage] = pageProps;
+const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
+
+useEffect(() => {
+  setShuffledAnswers(shuffleArray([...pageData?.answers?.[`item${pageIndex}`] || []]));
+}, [pageData])
 
   return(
     <div className='card-outer-wrapper'>
@@ -21,7 +34,7 @@ const [pageData, setPageData, currentPage, setCurrentPage] = pageProps;
 
       <div className="card-bottom">
         <div className="card-answer-options">
-          {pageData?.answers?.[`item${pageIndex}`].map((answer, index) => {
+          {shuffledAnswers.map((answer, index) => {
             return <CardAnswerOption key={index} answerNumber={index + 1} pageData={pageData} answerText={answer} pageIndex={pageIndex}/>
           })} 
         </div>

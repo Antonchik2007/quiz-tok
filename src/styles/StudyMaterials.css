@@ -1,0 +1,73 @@
+.study-materials-wrapper{
+    background-color: #1B1B1B;
+    border-top: 3px solid #3A3A3A;
+    border-bottom: 3px solid #3A3A3A;
+    width: 100vw;
+    padding-bottom: 20vh;
+    height: 100vh;
+}
+.study-materials-inner-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90vw;
+    margin-top: 3vh;
+    align-items: center;
+    
+}
+.study-materials-header{
+    align-items: center;
+    width: 90vw;
+    margin-left: 10vw;
+    display: flex;
+    flex-direction: column;
+    
+}
+.study-materials-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 90vw;
+    margin-left: 10vw;
+    
+}
+.collapsible-wrapper{
+    display: flex;
+    justify-content: center;
+    border: 3px solid #3A3A3A;
+    padding: 1vh;
+    width: 85vw;
+    margin-top: 5vh;
+    transition: background-color 0.6s ease;
+}
+.study-materials-body-section:hover{
+    background-color: rgb(24, 24, 177);
+}
+.current-material{
+    margin-top: 2cqh;
+    display: flex;
+    gap: 5vw;
+}
+.materials-text{
+    font-size: 2rem;
+    
+}
+.collapsible-content-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    background-color: #3A3A3A;
+    padding: 0;
+    border: none;
+  }
+  .collapsible-content-wrapper.open {
+    max-height: 200px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .collapsible-content-text{
+    font-size: 1rem;
+  }

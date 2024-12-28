@@ -61,8 +61,8 @@ const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsT
           if (cardAnswerOption.current) {
             cardAnswerOption.current.style.backgroundColor = 'green'
             confetti({
-              particleCount: 300,
-              spread: 140,
+              particleCount: 400,
+              spread: 200,
               startVelocity: 45,
               origin: {y: 0.6}
             })
