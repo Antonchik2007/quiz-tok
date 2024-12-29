@@ -11,11 +11,22 @@ const shuffleArray = (array) => {
 };
 
 const Card = ({pageProps, pageIndex}) => {
-
+const questionTextRef = useRef(null);
 const [pageData, setPageData, currentPage, setCurrentPage] = pageProps;
 const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
-
+useEffect(() => {
+  const answerLenght = pageData?.questions?.[`item${pageIndex}`].length;
+  let fontSize = '1.5rem';
+  if (answerLenght > 70){
+    fontSize = '1.2rem'
+  }
+  if(questionTextRef.current){
+    questionTextRef.current.style.fontSize = fontSize;
+  }
+  
+  
+}, [pageData?.questions?.[`item${pageIndex}`]])
 useEffect(() => {
   setShuffledAnswers(shuffleArray([...pageData?.answers?.[`item${pageIndex}`] || []]));
 }, [pageData])
@@ -27,7 +38,7 @@ useEffect(() => {
         <div className="question-title">
           <div className="question-word-wrapper"><h2 className='question-word'>Question: </h2></div>
           <div className="question-wrapper">
-            <p className='question-text'>{pageData?.questions?.[`item${pageIndex}`] || 'hello'}</p>
+            <p className='question-text' ref={questionTextRef}>{pageData?.questions?.[`item${pageIndex}`] || 'error loading data'}</p>
           </div>  
         </div>
       </div>

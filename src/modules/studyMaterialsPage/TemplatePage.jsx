@@ -6,15 +6,15 @@ const TemplatePage = ({subject, pageProps, cards}) => {
     const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
 const units = [
     {subject: 'Math', units: [
-        {unit: 'Algebra', api: ''},
-        {unit: 'Advanced Math', api: ''},
-        {unit: 'Problem-Solving and Data Analysis', api: ''},
-        {unit: 'Geometry and Trigonometry', api: ''}]},
+        {unit: 'Algebra', api: 'dataForApp/SAT/Math/Algebra.json'},
+        {unit: 'Advanced Math', api: 'dataForApp/SAT/Math/Advanced%20Math.json'},
+        {unit: 'Problem-Solving and Data Analysis', api: 'dataForApp/SAT/Math/Problem-Solving%20and%20Data%20Analysis.json'},
+        {unit: 'Geometry and Trigonometry', api: 'dataForApp/SAT/Math/Geometry%20and%20Trigonometry.json'}]},
     {subject: 'Reading and Writing', units: [
         {unit: 'Information and Ideas', api: 'dataForApp/SAT/English/Information%20and%20Ideas.json'},
         {unit: 'Craft and Structure', api: 'dataForApp/SAT/English/Craft%20and%20Structure.json'},
-        {unit: 'Expression of Ideas', api: ''},
-        {unit: 'Standard English Conventions', api: ''}]}
+        {unit: 'Expression of Ideas', api: 'dataForApp/SAT/English/Expression%20of%20Ideas.json'},
+        {unit: 'Standard English Conventions', api: 'dataForApp/SAT/English/Standard%20English%20Conventions.json'}]}
 ]
 
     const handleClick = (api) => {
