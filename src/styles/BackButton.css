@@ -1,0 +1,8 @@
+.button-wrapper{
+    position: absolute;
+    top: 8%;
+    left: 6%;
+}
+.button-text{
+    font-size: 1.1rem;
+}

@@ -1,8 +1,8 @@
 import React, {useEffect}from "react";
 import axios from 'axios';
-const ScrollTry = ({pageProps, apiSuffix}) => {
+const ScrollTry = ({pageProps}) => {
 
-    const [pageData, setPageData, currentPage, setCurrentPage, setApiSuffix] = pageProps;
+    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
 
     useEffect(() => {
         const fetchAnswers = async () => {

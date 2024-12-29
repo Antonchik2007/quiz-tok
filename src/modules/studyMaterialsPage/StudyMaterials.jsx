@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import './../../styles/StudyMaterials.css';
 import TemplatePage from './TemplatePage.jsx'
-const StudyMaterials = ({setApiSuffix, apiSuffix, setSelectedPage}) => {
-    
+import BackButton from "../profilePage/BackButton.jsx";
+import ProfilePage from "../profilePage/ProfilePage.jsx";
+const StudyMaterials = ({pageProps, cards}) => {
+    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
     const suffixes = {
         "Craft and Structure" : "dataForApp/SAT/English/Craft%20and%20Structure.json"
     }
@@ -18,6 +20,7 @@ const StudyMaterials = ({setApiSuffix, apiSuffix, setSelectedPage}) => {
       ];
     return(
         <div className="study-materials-wrapper">
+            <BackButton prevPage={<ProfilePage  pageProps={pageProps}/>}  setSelectedPage={setSelectedPage}/>
             <div className="study-materials-inner-wrapper">
                 <div className="study-materials-header">
                     <p className="materials-text">Study materials</p>
@@ -36,7 +39,7 @@ const StudyMaterials = ({setApiSuffix, apiSuffix, setSelectedPage}) => {
                                 </div>
                                 {collapsible.content.map((subject, indexC) => {
                                     return(
-                                        <div key={indexC} onClick={() => setSelectedPage(<TemplatePage subject={subject}/>)}className={`collapsible-content-wrapper ${openIndex === index ? "open" : ""}`}>
+                                        <div key={indexC} onClick={() => setSelectedPage(<TemplatePage subject={subject} pageProps={pageProps} cards={cards}/>)}className={`collapsible-content-wrapper ${openIndex === index ? "open" : ""}`}>
                                     {openIndex === index && <p className="collapsible-content-text">{subject}</p>}
                                         </div>
                                     )

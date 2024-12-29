@@ -8,6 +8,7 @@ const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsT
     const cardAnswerOption = useRef(null);
 
     const [questionOption, setQuestionOption] = useState(' ')
+    const [isDisabled, setIsDisabled] = useState(false)
    
     
     useEffect(() => {
@@ -60,6 +61,7 @@ const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsT
         if(answerText === pageData?.correctAnswers?.[`item${pageIndex}`]){ 
           if (cardAnswerOption.current) {
             cardAnswerOption.current.style.backgroundColor = 'green'
+            setIsDisabled(true)
             confetti({
               particleCount: 400,
               spread: 200,
@@ -71,12 +73,13 @@ const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsT
         else{  
           if (cardAnswerOption.current) {
             cardAnswerOption.current.style.backgroundColor = 'red'
+            setIsDisabled(true)
           }
         }
       }
 
     return(
-        <div className="card-answer-option" onClick={checkAnswer} ref={cardAnswerOption}>
+        <div className={`card-answer-option ${isDisabled ? "disabled" : ""}`} onClick={!isDisabled ? checkAnswer : undefined} ref={cardAnswerOption}>
             <div className="select-answer-button-wrapper">
                 <p className='select-answer-button'>{questionOption}</p>
             </div>
