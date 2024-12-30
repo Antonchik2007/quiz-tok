@@ -1,0 +1,67 @@
+.sign-up-wrapper{
+    display: flex;
+    justify-content: center;
+    
+    background-color: #1B1B1B;
+    height: 100vh;
+}
+.sign-up-inner-wrapper{
+    border: 3px solid white;
+    background-color: #3A3A3A;
+    margin-top: 15vh;
+    height: 35vh;
+    width: 80vw;
+    justify-content: center;
+}
+.top-section{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottom-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+}
+.input{
+    margin-top: 1vh;
+    font-size: 1rem;
+    height: 4vh;
+    width: 65vw;
+    border-radius: 5px;
+    border: 3px solid #1B1B1B;
+}
+.sign-up-text{
+    padding-bottom: 2vh;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.sign-up-button{
+    border-radius: 5px;
+    border: 3px solid #1B1B1B;
+    margin-top: 1vh;
+    background-color: blue;
+    padding-left: 26vw;
+    padding-top: 0.8vh;
+    padding-bottom: 0.8vh;
+    justify-content: center;
+    align-items: center;
+    padding-right: 26vw;
+}
+.sign-up-button:hover{
+    background-color: rgb(5, 5, 203);
+}
+.sign-up-button-text{
+    font-size: 1.3rem;
+}
+.redirect-text{
+    font-size: 1.2rem;
+}
+.google-button{
+    margin-top: 1vh;
+}
+.log-in-text{
+    margin-left: 2vw;
+    font-size: 1.2rem;
+}

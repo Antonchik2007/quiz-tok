@@ -3,6 +3,7 @@ import '../../styles/profilePage.css'
 import StudyMaterials from "../studyMaterialsPage/StudyMaterials";
 import ProgressPage from '../progressPage/ProgressPage.jsx'
 import BackButton from "./BackButton.jsx";
+import SignUp from "../authorization/SignUp.jsx";
 const ProfilePage = ({pageProps, cards}) => {
     const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
     return(
@@ -13,7 +14,7 @@ const ProfilePage = ({pageProps, cards}) => {
                     <p className="profile-text">Profile</p>
                     <div className="log-in-elements">
                         <p>Account name</p>
-                        <p>Log out</p>
+                        <p onClick={() => setSelectedPage(<SignUp/>)}>Sign up</p>
                     </div>
                 </div>
                 <div className="profile-page-body">

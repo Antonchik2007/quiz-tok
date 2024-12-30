@@ -3,6 +3,8 @@ import './App.css'
 import ScrollTry from './modules/homePage/ScrollTry.jsx'
 import Card from './modules/homePage/Card.jsx'
 import ProfilePage from './modules/profilePage/ProfilePage.jsx'
+import { getRedirectResult } from "firebase/auth";
+import { auth } from "./firebase/firebase-config"
 export default function App() {
 
   
@@ -81,6 +83,7 @@ export default function App() {
 
     }
   };
+
 
   return (
     <main>
