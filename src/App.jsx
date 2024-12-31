@@ -15,6 +15,7 @@ export default function App() {
   const [fetching, setFetching] = useState(true)
   const [selectedPage, setSelectedPage] = useState('')
   const [apiSuffix, setApiSuffix] = useState('dataForApp/HighSchool/Math/AP%20preCalc/Exponential%20and%20Logarithmic%20Functions.json')
+  const [isLoggenIn, setIsLoggedIn] = useState(false);
   
   const pageProps = [
     pageData,
@@ -28,7 +29,9 @@ export default function App() {
     fetching,
     setFetching,
     pageCount,
-    setPageCount
+    setPageCount,
+    isLoggenIn,
+    setIsLoggedIn
   ]
   const cards = Array.from({ length: pageCount }, (_, index) => (
     <Card key={index} pageProps={pageProps} pageIndex={index+1}/>
@@ -76,7 +79,6 @@ export default function App() {
 
       // Calculate current page based on full div length
       if(scrollTop%visibleHeight === 0){
-        setPageCount(scrollTop/visibleHeight + 3) //the plus indicates how many more pages we want to load on top
         setFetching(true)
         console.log('Done');
       }

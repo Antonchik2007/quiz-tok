@@ -6,10 +6,17 @@ const ScrollTry = ({pageProps}) => {
 
     useEffect(() => {
         const fetchAnswers = async () => {
+            console.log('Triggered');
+            
             try{
                 const response = await axios.get(`https://antonchik2007.github.io/DataBase/${apiSuffix}`)
                 setPageData(response.data);
                 console.log(pageData)
+                const length = Object.keys(response.data.questions).length;
+                setPageCount(length);
+                
+                
+                
                 
             }
             catch(error){

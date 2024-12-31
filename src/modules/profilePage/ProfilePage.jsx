@@ -5,7 +5,7 @@ import ProgressPage from '../progressPage/ProgressPage.jsx'
 import BackButton from "./BackButton.jsx";
 import SignUp from "../authorization/SignUp.jsx";
 const ProfilePage = ({pageProps, cards}) => {
-    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
+    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount, isLoggenIn,setIsLoggedIn] = pageProps
     return(
         <div className="profile-page-wrapper">
             <div className="profile-page-inner-wrapper">
@@ -14,7 +14,7 @@ const ProfilePage = ({pageProps, cards}) => {
                     <p className="profile-text">Profile</p>
                     <div className="log-in-elements">
                         <p>Account name</p>
-                        <p onClick={() => setSelectedPage(<SignUp/>)}>Sign up</p>
+                        <p onClick={() => setSelectedPage(<SignUp setSelectedPage={setSelectedPage}/>)}>Sign up</p>
                     </div>
                 </div>
                 <div className="profile-page-body">
