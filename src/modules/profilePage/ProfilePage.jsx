@@ -4,8 +4,10 @@ import StudyMaterials from "../studyMaterialsPage/StudyMaterials";
 import ProgressPage from '../progressPage/ProgressPage.jsx'
 import BackButton from "./BackButton.jsx";
 import SignUp from "../authorization/SignUp.jsx";
-const ProfilePage = ({pageProps, cards}) => {
-    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount, isLoggenIn,setIsLoggedIn] = pageProps
+import { useAppContext } from "../../AppContext.jsx";
+import { handleLogout } from "../authorization/authFunctions.js";
+const ProfilePage = ({cards}) => {
+    const {setSelectedPage, isLoggedIn, setIsLoggedIn, userId} = useAppContext()
     return(
         <div className="profile-page-wrapper">
             <div className="profile-page-inner-wrapper">
@@ -14,13 +16,13 @@ const ProfilePage = ({pageProps, cards}) => {
                     <p className="profile-text">Profile</p>
                     <div className="log-in-elements">
                         <p>Account name</p>
-                        <p onClick={() => setSelectedPage(<SignUp setSelectedPage={setSelectedPage}/>)}>Sign up</p>
+                        {isLoggedIn ? (<p onClick={() => handleLogout(setIsLoggedIn)}>Sign out</p>) : (<p onClick={() => setSelectedPage(<SignUp />)}>Sign up</p>)}
                     </div>
                 </div>
                 <div className="profile-page-body">
-                    <div className="profile-page-body-section" onClick={() => setSelectedPage(<StudyMaterials pageProps={pageProps} cards={cards}/>)}><p>Select study material</p></div>
+                    <div className="profile-page-body-section" onClick={() => setSelectedPage(<StudyMaterials cards={cards}/>)}><p>Select study material</p></div>
                     <div className="profile-page-body-section" onClick={() => setSelectedPage(<ProgressPage/>)}><p>View progress</p></div>
-                    <div className="profile-page-body-section" onClick={() => setSelectedPage('PersonalSettings')}><p>Personal settings</p></div>
+                    <div className="profile-page-body-section" onClick={() => console.log(userId)}><p>Personal settings</p></div>
                     <div className="profile-page-body-section" onClick={() => setSelectedPage('StudyMaterials')}><p>Something else</p></div>
                 </div>
             </div>

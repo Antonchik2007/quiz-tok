@@ -2,8 +2,9 @@ import React from "react";
 import '../../styles/TemplatePage.css'
 import BackButton from "../profilePage/BackButton";
 import StudyMaterials from "./StudyMaterials";
-const TemplatePage = ({subject, pageProps, cards}) => {
-    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
+import { useAppContext } from "../../AppContext";
+const TemplatePage = ({subject, cards}) => {
+    const {setApiSuffix, setSelectedPage} = useAppContext()
 const units = [
     {subject: 'Math', units: [
         {unit: 'Algebra', api: 'dataForApp/SAT/Math/Algebra.json'},
@@ -23,7 +24,7 @@ const units = [
     }
     return(
         <div className="template-page-wrapper">
-            <BackButton prevPage={<StudyMaterials pageProps={pageProps}/>} setSelectedPage={setSelectedPage}/>
+            <BackButton prevPage={<StudyMaterials cards={cards}/>}/>
             <div className="template-page-inner-wrapper">
                 <div className="template-page-header">
                     <p className="profile-text">{subject}</p>

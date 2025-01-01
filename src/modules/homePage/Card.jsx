@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import './../../styles/Card.css'
 import CardAnswerOption from './CardAnswerOption'
+import { useAppContext } from '../../AppContext';
 
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -10,13 +11,14 @@ const shuffleArray = (array) => {
   return array;
 };
 
-const Card = ({pageProps, pageIndex}) => {
+const Card = ({pageIndex}) => {
 const questionTextRef = useRef(null);
-const [pageData, setPageData, currentPage, setCurrentPage] = pageProps;
+const pageData = useAppContext().pageData;
 const [shuffledAnswers, setShuffledAnswers] = useState([]);
+const questionText = pageData?.questions?.[`item${pageIndex}`]
 
 useEffect(() => {
-  const answerLenght = pageData?.questions?.[`item${pageIndex}`].length;
+  const answerLenght = (pageData?.questions?.[`item${pageIndex}`] || []).length;
   let fontSize = '1.5rem';
   if (answerLenght > 70){
     fontSize = '1.2rem'
@@ -38,7 +40,7 @@ useEffect(() => {
         <div className="question-title">
           <div className="question-word-wrapper"><h2 className='question-word'>Question: </h2></div>
           <div className="question-wrapper">
-            <p className='question-text' ref={questionTextRef}>{pageData?.questions?.[`item${pageIndex}`] || 'error loading data'}</p>
+            <p className='question-text' ref={questionTextRef}>{ questionText|| 'error loading data'}</p>
           </div>  
         </div>
       </div>
@@ -46,7 +48,7 @@ useEffect(() => {
       <div className="card-bottom">
         <div className="card-answer-options">
           {shuffledAnswers.map((answer, index) => {
-            return <CardAnswerOption key={index} answerNumber={index + 1} pageData={pageData} answerText={answer} pageIndex={pageIndex}/>
+            return <CardAnswerOption key={index} answerNumber={index + 1} pageData={pageData} answerText={answer} pageIndex={pageIndex}  questionText={questionText}/>
           })} 
         </div>
       </div>

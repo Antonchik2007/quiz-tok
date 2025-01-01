@@ -1,15 +1,24 @@
 import React, {useEffect, useRef, useState} from "react";
 import './../../styles/CardAnswerOption.css'
 import confetti from 'canvas-confetti'; 
+import { db } from "../../firebase/firebase-config";
+import { updateDoc, doc, arrayUnion } from "firebase/firestore";
+import { useAppContext } from "../../AppContext";
 
-const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsTinted}) => {
-
+const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, questionText}) => {
+    const userEmail = useAppContext().userEmail;
     const answerTextRef = useRef(null);
     const cardAnswerOption = useRef(null);
 
     const [questionOption, setQuestionOption] = useState(' ')
     const [isDisabled, setIsDisabled] = useState(false)
    
+    const updateAnswer = async (color) => {
+      const userRef = doc(db, "users", userEmail);
+      await updateDoc(userRef, {
+        "Study_materials": arrayUnion({[questionText.replace(/[~*/[\]]/g, "_") + answerText.replace(/[~*/[\]]/g, "_")]: color})
+      })
+    }
     
     useEffect(() => {
       switch (answerNumber) {
@@ -75,6 +84,14 @@ const CardAnswerOption = ({answerNumber, answerText, pageData, pageIndex, setIsT
             cardAnswerOption.current.style.backgroundColor = 'red'
             setIsDisabled(true)
           }
+        }
+        try {
+          updateAnswer(cardAnswerOption.current.style.backgroundColor)
+        } catch (error){
+          console.log(error.message)
+          alert(error.message)
+          console.log(userEmail);
+          
         }
       }
 

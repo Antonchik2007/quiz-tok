@@ -1,9 +1,10 @@
 import React, {useEffect}from "react";
 import axios from 'axios';
-const ScrollTry = ({pageProps}) => {
+import { useAppContext } from "../../AppContext";
+const ScrollTry = () => {
 
-    const[pageData,setPageData,currentPage,setCurrentPage,apiSuffix,setApiSuffix,selectedPage,setSelectedPage,fetching,setFetching,pageCount,setPageCount] = pageProps
-
+    
+    const {pageData, setPageData, apiSuffix, setPageCount} = useAppContext();
     useEffect(() => {
         const fetchAnswers = async () => {
             console.log('Triggered');

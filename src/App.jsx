@@ -1,46 +1,20 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect,useRef} from 'react'
 import './App.css'
 import ScrollTry from './modules/homePage/ScrollTry.jsx'
 import Card from './modules/homePage/Card.jsx'
 import ProfilePage from './modules/profilePage/ProfilePage.jsx'
-import { getRedirectResult } from "firebase/auth";
-import { auth } from "./firebase/firebase-config"
+import { useAppContext } from './AppContext.jsx'
 export default function App() {
 
-  
- 
-  const [pageData, setPageData] = useState({})
-  const [currentPage, setCurrentPage] = useState(1)
-  const [pageCount, setPageCount] = useState(2)
-  const [fetching, setFetching] = useState(true)
-  const [selectedPage, setSelectedPage] = useState('')
-  const [apiSuffix, setApiSuffix] = useState('dataForApp/HighSchool/Math/AP%20preCalc/Exponential%20and%20Logarithmic%20Functions.json')
-  const [isLoggenIn, setIsLoggedIn] = useState(false);
-  
-  const pageProps = [
-    pageData,
-    setPageData,
-    currentPage,
-    setCurrentPage,
-    apiSuffix,
-    setApiSuffix,
-    selectedPage,
-    setSelectedPage,
-    fetching,
-    setFetching,
-    pageCount,
-    setPageCount,
-    isLoggenIn,
-    setIsLoggedIn
-  ]
+
+  const {setCurrentPage, setFetching, fetching, selectedPage, setSelectedPage, pageCount} = useAppContext();
+
+
   const cards = Array.from({ length: pageCount }, (_, index) => (
-    <Card key={index} pageProps={pageProps} pageIndex={index+1}/>
+    <Card key={index} pageIndex={index+1}/>
   ));
   const scrollableDivRef = useRef(null)
-
-
-  
-  
+ 
 
 
   useEffect(() => {
@@ -92,7 +66,7 @@ export default function App() {
       <div className='main-container'>
         <div className="secondary-container">
         <div className='header'>
-          <ScrollTry pageProps={pageProps}/>
+          <ScrollTry/>
           <h1 className='app-title'>QuizTok</h1>
         </div>
 
@@ -103,7 +77,7 @@ export default function App() {
         <div className="footer">
           <div className='footer-wrapper'>
             <h3 className='footer-home-button' onClick={() => setSelectedPage(cards)}>Home</h3>
-            <h3 className='footer-profile-button' onClick={() => setSelectedPage(<ProfilePage  pageProps={pageProps} cards={cards}/>)}>Profile</h3>
+            <h3 className='footer-profile-button' onClick={() => setSelectedPage(<ProfilePage cards={cards}/>)}>Profile</h3>
           </div>
         </div>
         </div>
