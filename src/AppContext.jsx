@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
     const [apiSuffix, setApiSuffix] = useState('dataForApp/HighSchool/Math/AP%20preCalc/Exponential%20and%20Logarithmic%20Functions.json')
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('')
+    const [trigger, setTrigger] = useState(0)
 
   return (
     <AppContext.Provider value={{ 
@@ -31,7 +32,9 @@ export const AppProvider = ({ children }) => {
         isLoggedIn,
         setIsLoggedIn,
         userEmail,
-        setUserEmail
+        setUserEmail,
+        trigger,
+        setTrigger
          }}>
       {children}
     </AppContext.Provider>

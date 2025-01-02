@@ -12,6 +12,7 @@ const shuffleArray = (array) => {
 };
 
 const Card = ({pageIndex}) => {
+  
 const questionTextRef = useRef(null);
 const pageData = useAppContext().pageData;
 const [shuffledAnswers, setShuffledAnswers] = useState([]);

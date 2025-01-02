@@ -4,7 +4,7 @@ import { useAppContext } from "../../AppContext";
 const ScrollTry = () => {
 
     
-    const {pageData, setPageData, apiSuffix, setPageCount} = useAppContext();
+    const {pageData, setPageData, apiSuffix, setPageCount, setTrigger} = useAppContext();
     useEffect(() => {
         const fetchAnswers = async () => {
             console.log('Triggered');
@@ -23,6 +23,7 @@ const ScrollTry = () => {
             catch(error){
                 console.error('Error fetching data', error)
             }
+            setTimeout(setTrigger((prev) => prev + 1), 2000)
         }
         fetchAnswers();
     }, [apiSuffix]) //function for getting data from the API
